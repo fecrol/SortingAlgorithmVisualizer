@@ -44,8 +44,7 @@
 
 .data-piece {
     margin: 0.2rem 0.2rem 0.2rem 0;
-    width: 10px;
-    background: #03a9f4;
+    width: 1.3rem;
 }
 
 .content-footer {
@@ -58,6 +57,18 @@
 .buttons {
     display: flex;
     justify-content: space-between;
-    border: 1px solid red;
-    width: 30%;
+    width: 50%;
+}
+
+button {
+    width: 20%;
+    padding: 1rem;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
 }
