@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/SortingAlgorithmVisualizer/static/css/main.c230ccfa.css",
+    "main.js": "/SortingAlgorithmVisualizer/static/js/main.1d206972.js",
+    "index.html": "/SortingAlgorithmVisualizer/index.html",
+    "main.c230ccfa.css.map": "/SortingAlgorithmVisualizer/static/css/main.c230ccfa.css.map",
+    "main.1d206972.js.map": "/SortingAlgorithmVisualizer/static/js/main.1d206972.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c230ccfa.css",
+    "static/js/main.1d206972.js"
+  ]
+}
