@@ -1,7 +1,7 @@
 import React from 'react'
 import DataPieces from './DataPieces'
 
-export default function Content({data, generateData, bubbleSort, selectionSort}) {
+export default function Content({data, generateData, bubbleSort, selectionSort, insertionSort}) {
   return (
     <div className="flex-container centre">
         <div className="content-container">
@@ -18,7 +18,7 @@ export default function Content({data, generateData, bubbleSort, selectionSort})
               <button id="generate-btn" onClick={generateData}>Generate</button>
               <button id="bubble-sort-btn" onClick={() => {bubbleSort([...data])}}>Bubble Sort</button>
               <button id="selection-sort-btn" onClick={() => {selectionSort([...data])}}>Selection Sort</button>
-              <button id="insertion-sort-btn">Insertion Sort</button>
+              <button id="insertion-sort-btn" onClick={() => {insertionSort([...data])}}>Insertion Sort</button>
             </div>
           </div>
         </div>
