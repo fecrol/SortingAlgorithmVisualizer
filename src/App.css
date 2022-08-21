@@ -26,12 +26,19 @@
 }
 
 .content-header {
+    display: flex;
     padding: 1rem;
     text-align: center;
+    justify-content: center;
 }
 
 .content-title {
     text-transform: uppercase;
+    color: #008080;
+    border: 2px solid #bbbbbb;
+    border-radius: 1rem;
+    padding: .5rem;
+    width: 50%;
 }
 
 .content-body {
@@ -44,7 +51,7 @@
 
 .data-piece {
     margin: 0.2rem 0.2rem 0.2rem 0;
-    width: 1.3rem;
+    width: 2.2rem;
 }
 
 .content-footer {
