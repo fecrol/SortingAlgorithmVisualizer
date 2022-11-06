@@ -5,7 +5,7 @@ export default function DataPieces({ data }) {
 
   return (
     data.map((dataPiece) => {
-      return <DataPiece dataPiece={dataPiece} />
+      return <DataPiece dataPiece={dataPiece} key={data.indexOf(dataPiece)} />
     })
   )
 }

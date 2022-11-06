@@ -1,17 +1,23 @@
 import React, { useRef } from 'react'
 import DataPieces from './DataPieces'
 import { useContainerResize } from './useContainerResize'
+import { useInterruptSort } from './useInterruptSort'
 import { useRandData } from './useRandData'
+import { bubbleSortBtnClick, generateBtnClick } from './utilities'
 
 export default function Content() {
 
-  const dataPieceWidth = 10
-  const dataPieceMarginRight = 2
-  const maxVal = 100
   const contentBodyRef = useRef()
+  const generateBtnRef = useRef()
+  const bubbleSortBtnRef = useRef()
+  const selectionSortBtnRef = useRef()
+  const insertionSortBtnRef = useRef()
+  const buttons = [bubbleSortBtnRef, selectionSortBtnRef, insertionSortBtnRef]
+
   const dimensions = useContainerResize(contentBodyRef)
-  const [data, setData] = useRandData(dataPieceWidth, dataPieceMarginRight, dimensions, maxVal)
-  
+  const [data, setData] = useRandData(dimensions)
+  const sorting = useInterruptSort(dimensions, data)
+
   return (
     <div className="flex-container centre">
         <div className="content-container centre">
@@ -25,10 +31,10 @@ export default function Content() {
           </div>
           <div className="content-footer">
             <div className="buttons">
-              <button id="generate-btn" className="button">Generate</button>
-              <button id="bubble-sort-btn" className="button">Bubble Sort</button>
-              <button id="selection-sort-btn" className="button">Selection Sort</button>
-              <button id="insertion-sort-btn" className="button">Insertion Sort</button>
+              <button id="generate-btn" className="button" ref={generateBtnRef} onClick={() => generateBtnClick(setData, dimensions)}>Generate</button>
+              <button id="bubble-sort-btn" className="button" ref={bubbleSortBtnRef} onClick={() => bubbleSortBtnClick(buttons, sorting, dimensions)}>Bubble Sort</button>
+              <button id="selection-sort-btn" className="button" ref={selectionSortBtnRef}>Selection Sort</button>
+              <button id="insertion-sort-btn" className="button" ref={insertionSortBtnRef}>Insertion Sort</button>
             </div>
           </div>
         </div>
