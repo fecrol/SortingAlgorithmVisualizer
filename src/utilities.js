@@ -1,5 +1,5 @@
 import { generateData } from "./generateData"
-import { bubbleSort } from "./sorting-algorithms/sortingAlgorithms"
+import { bubbleSort, selectionSort } from "./sorting-algorithms/sortingAlgorithms"
 
 export const wait = (timeout) => {
 
@@ -15,9 +15,13 @@ const toggleBtns = (buttons) => {
   });
 }
 
-export const calculateAnimationSpeed = (dimensions) => {
+export const calculateAnimationSpeed = (dimensions, algorithm) => {
 
-  return dimensions.width < 400 ? 25 : dimensions.width > 1000 ? 0.5 : 5
+  const slowSpeed = algorithm === "bubble" ? 25 : 75
+  const midSpeed = algorithm === "bubble" ? 5 : 30
+  const maxSpeed = algorithm === "bubble" ? 0.5 : 10
+
+  return dimensions.width < 400 ? slowSpeed : dimensions.width > 1000 ? maxSpeed : midSpeed
 }
 
 export const generateBtnClick = (setData, dimensions) => {
@@ -34,4 +38,14 @@ export const bubbleSortBtnClick = async (buttons, sorting, dimensions) => {
   await bubbleSort(dimensions, sorting)
 
   toggleBtns(buttons) // enable buttons
+}
+
+export const selectionSortBtnClcik = async (buttons, sorting, dimensions) => {
+
+  toggleBtns(buttons) // disable buttons
+
+  sorting.current = true
+  await selectionSort(dimensions, sorting)
+
+  toggleBtns(buttons) // enabe buttons
 }

@@ -30,12 +30,6 @@ body {
     align-items: center;
 }
 
-/*
-======================================================
-******************* MOBILE STYLING *******************
-======================================================
-*/
-
 .content-container {
     display: flex;
     flex-direction: column;
@@ -72,6 +66,16 @@ body {
 
 .data-piece {
     background-color: var(--data-piece-colour);
+}
+
+.smallest-data-piece {
+    animation: flash .2s infinite;
+}
+
+@keyframes flash {
+    50% {
+        opacity: 25%;
+    }
 }
 
 .content-footer {
