@@ -78,7 +78,7 @@ export const selectionSort = async (dimensions, sorting) => {
                 const currentValueHeight = parseInt(dataPieces[j].style.height)
 
                 if(currentValueHeight < lowestValueHeight) {
-                    if(lowestValueIndex != i) {
+                    if(lowestValueIndex !== i) {
                         dataPieces[lowestValueIndex].style.border = "none"
                         dataPieces[lowestValueIndex].classList.remove(SMALLEST_DATA_PIECE_CLASS)
                     }
@@ -105,9 +105,42 @@ export const selectionSort = async (dimensions, sorting) => {
     catch(err) {
         // Clean up data pieces
         const dataPieces = document.getElementsByClassName("data-piece")
+
         for(let i = 0; i < dataPieces.length; i++) {
             dataPieces[i].style.border = "none"
             if(dataPieces[i].classList.contains(SMALLEST_DATA_PIECE_CLASS)) dataPieces[i].classList.remove(SMALLEST_DATA_PIECE_CLASS)
         }
     }
+}
+
+export const insertionSort = async (dimensions, sorting) => {
+
+    const dataPieces = document.getElementsByClassName("data-piece")
+    let arrayLength = dataPieces.length
+    let animationSpeed = calculateAnimationSpeed(dimensions, "insertion")
+
+    for(let i = 1; i < arrayLength; i++) {
+
+        if(!sorting.current) return
+
+        const currentDataPiece = dataPieces[i]
+        const currentDataPieceHeight = currentDataPiece.style.height
+        let j = i - 1
+
+        currentDataPiece.style.border = SELECTED_DATA_PIECE_BORDER
+
+        await wait(animationSpeed)
+
+        while(j >= 0 && parseInt(dataPieces[j].style.height) > parseInt(currentDataPieceHeight)) {
+            dataPieces[j + 1].style.height = dataPieces[j].style.height
+            j -= 1
+        }
+
+        dataPieces[j + 1].style.height = currentDataPieceHeight
+        dataPieces[j + 1].style.border = currentDataPiece.style.border
+        currentDataPiece.style.border = "none"
+
+        await wait(animationSpeed)
+        dataPieces[j + 1].style.border = "none"
+    }    
 }

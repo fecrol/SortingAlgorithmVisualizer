@@ -3,7 +3,7 @@ import DataPieces from './DataPieces'
 import { useContainerResize } from './useContainerResize'
 import { useInterruptSort } from './useInterruptSort'
 import { useRandData } from './useRandData'
-import { bubbleSortBtnClick, generateBtnClick, selectionSortBtnClcik } from './utilities'
+import { bubbleSortBtnClick, generateBtnClick, insertionSortBtnClick, selectionSortBtnClcik } from './utilities'
 
 export default function Content() {
 
@@ -34,7 +34,7 @@ export default function Content() {
               <button id="generate-btn" className="button" ref={generateBtnRef} onClick={() => generateBtnClick(setData, dimensions)}>Generate</button>
               <button id="bubble-sort-btn" className="button" ref={bubbleSortBtnRef} onClick={() => bubbleSortBtnClick(buttons, sorting, dimensions)}>Bubble Sort</button>
               <button id="selection-sort-btn" className="button" ref={selectionSortBtnRef} onClick={() => selectionSortBtnClcik(buttons, sorting, dimensions)}>Selection Sort</button>
-              <button id="insertion-sort-btn" className="button" ref={insertionSortBtnRef}>Insertion Sort</button>
+              <button id="insertion-sort-btn" className="button" ref={insertionSortBtnRef} onClick={() => insertionSortBtnClick(buttons, sorting, dimensions)}>Insertion Sort</button>
             </div>
           </div>
         </div>
