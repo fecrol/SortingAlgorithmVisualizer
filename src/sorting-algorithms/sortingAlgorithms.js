@@ -119,28 +119,33 @@ export const insertionSort = async (dimensions, sorting) => {
     let arrayLength = dataPieces.length
     let animationSpeed = calculateAnimationSpeed(dimensions, "insertion")
 
-    for(let i = 1; i < arrayLength; i++) {
+    try {
+        for(let i = 1; i < arrayLength; i++) {
 
-        if(!sorting.current) return
-
-        const currentDataPiece = dataPieces[i]
-        const currentDataPieceHeight = currentDataPiece.style.height
-        let j = i - 1
-
-        currentDataPiece.style.border = SELECTED_DATA_PIECE_BORDER
-
-        await wait(animationSpeed)
-
-        while(j >= 0 && parseInt(dataPieces[j].style.height) > parseInt(currentDataPieceHeight)) {
-            dataPieces[j + 1].style.height = dataPieces[j].style.height
-            j -= 1
+            if(!sorting.current) return
+    
+            const currentDataPiece = dataPieces[i]
+            const currentDataPieceHeight = currentDataPiece.style.height
+            let j = i - 1
+    
+            currentDataPiece.style.border = SELECTED_DATA_PIECE_BORDER
+    
+            await wait(animationSpeed)
+    
+            while(j >= 0 && parseInt(dataPieces[j].style.height) > parseInt(currentDataPieceHeight)) {
+                dataPieces[j + 1].style.height = dataPieces[j].style.height
+                j -= 1
+            }
+    
+            dataPieces[j + 1].style.height = currentDataPieceHeight
+            dataPieces[j + 1].style.border = currentDataPiece.style.border
+            currentDataPiece.style.border = "none"
+    
+            await wait(animationSpeed)
+            dataPieces[j + 1].style.border = "none"
         }
-
-        dataPieces[j + 1].style.height = currentDataPieceHeight
-        dataPieces[j + 1].style.border = currentDataPiece.style.border
-        currentDataPiece.style.border = "none"
-
-        await wait(animationSpeed)
-        dataPieces[j + 1].style.border = "none"
+    }
+    catch(err) {
+        // DO NOTHING
     }    
 }
